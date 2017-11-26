@@ -13,7 +13,8 @@ $(BUILD)/lib/libmbedtls.a: build/tools
 		rm -fr $(BUILD)/mbedtls; \
 		$(TAR) zxf $(DEPS)/mbedtls-$(MBEDTLS_VERSION)-apache.tgz; \
 		mv mbedtls-$(MBEDTLS_VERSION) mbedtls; \
-		cp $(DEPS)/mbedtls-config.h mbedtls/include/mbedtls/config.h
+		# TODO add small mbedtls config for payloads, large for console
+		# cp $(DEPS)/mbedtls-config.h mbedtls/include/mbedtls/config.h
 	@echo "Building mbedtls for $(TARGET)"
 	@cd $(BUILD)/mbedtls; \
 		$(ENV) $(MBEDTLS_ENV) $(MAKE) lib $(LOGBUILD); \
