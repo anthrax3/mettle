@@ -28,6 +28,8 @@ static void usage(const char *name)
 	printf("  -b, --background [0|1] start as a background service\n");
 	printf("  -p, --persist [none|install|uninstall] manage persistence\n");
 	printf("  -n, --name <name>      name to start as\n");
+	printf("  -l, --listen\n");
+	printf("  -c, --console\n");
 	printf("\n");
 	exit(1);
 }
@@ -57,9 +59,11 @@ static int parse_cmdline(int argc, char * const argv[], struct mettle *m)
 		{"background", optional_argument, NULL, 'b'},
 		{"persist", required_argument, NULL, 'p'},
 		{"name", required_argument, NULL, 'n'},
+		{"listen", required_argument, NULL, 'l'},
+		{"console", required_argument, NULL, 'c'},
 		{ 0, 0, NULL, 0 }
 	};
-	const char *short_options = "hu:U:G:d::o:b::p:n:";
+	const char *short_options = "hu:U:G:d::o:b::p:n:l:c:";
 	const char *out = NULL;
 	char *name = strdup("service");
 	bool debug = false;
